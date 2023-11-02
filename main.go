@@ -76,3 +76,60 @@ func main() {
 }
 
 
+/* TestCases
+1. grpcurl -plaintext -d '{"user_id": 2}' localhost:8080 UserService/GetUserDetails
+Output:
+{
+  "id": 2,
+  "fname": "Praneetha",
+  "city": "HYD",
+  "phone": "2222222222",
+  "height": 5.1,
+  "Married": true
+}
+2. $ grpcurl -plaintext -d '{"user_id": [1,2,3]}' localhost:8080 UserService/GetUsersDetails
+Output:
+{
+  "userDetails": [
+    {
+      "id": 1,
+      "fname": "Steve",
+      "city": "LA",
+      "phone": "1234567890",
+      "height": 5.8,
+      "Married": true
+    },
+    {
+      "id": 2,
+      "fname": "Praneetha",
+      "city": "HYD",
+      "phone": "2222222222",
+      "height": 5.1,
+      "Married": true
+    },
+    {
+      "id": 3,
+      "fname": "Sreeja",
+      "city": "BNGLR",
+      "phone": "3333333333",
+      "height": 5.2,
+      "Married": true
+    }
+  ]
+}
+3. grpcurl -plaintext -d '{"user_id": [0,2,3]}' localhost:8080 UserService/GetUsersDetails
+ERROR:
+  Code: InvalidArgument
+  Message: user_id must be a positive integer
+
+4.  grpcurl -plaintext -d '{"user_id": [1,-2,3]}' localhost:8080 UserService/GetUsersDetails
+ERROR:
+  Code: InvalidArgument
+  Message: user_id must be a positive integer
+
+5.  grpcurl -plaintext -d '{"user_id": [10,-2,3]}' localhost:8080 UserService/GetUsersDetails
+ERROR:
+  Code: InvalidArgument
+  Message: user_id is not available
+
+*/
