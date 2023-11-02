@@ -23,7 +23,12 @@ This a simple Go application demonstrating a gRPC service.
     git clone https://github.com/Praneetha-K/gRPCService.git
     cd GRPC_Totality_Corp
     ```
-
+2. Initialize go modules:
+   ```bash
+   go mod init gRPC
+   go mod tidy
+   go mod vendor
+   ```
 2. Generate the Go files from the proto file:
 
     ```bash
